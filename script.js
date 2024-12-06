@@ -49,6 +49,11 @@ let gameStart = prompt("Would you like to play? Please type Yes or No");
 if (gameStart === "Yes") {
   playAgain = true;
 }
+//prompt user for name ✅
+//store name as variable ✅
+//use name in game result (Player 1)
+
+let userName = prompt("Please enter your name: ");
 
 // Declare function
 function userSelection() {
@@ -61,28 +66,28 @@ function userSelection() {
     console.log("Draw");
     //  "Draw";
   } else if (score === "RockPaper") {
-    console.log("Player 2 wins");
+    console.log("Computer wins");
     //  "Player 2 wins";
   } else if (score === "RockScissors") {
-    console.log("Player 1 wins");
+    console.log(`${userName} wins`);
     //  "Player 1 wins";
   } else if (score === "PaperPaper") {
     console.log("Draw");
     //  "Draw";
   } else if (score === "PaperScissors") {
-    console.log("Player 2 wins");
+    console.log("Computer wins");
     //  "Player 2 wins";
   } else if (score === "PaperRock") {
-    console.log("Player 1 wins");
+    console.log(`${userName} wins`);
     //  "Player 1 wins";
   } else if (score === "ScissorsScissors") {
     console.log("Draw");
     //  "Draw";
   } else if (score === "ScissorsRock") {
-    console.log("Player 2 wins");
+    console.log("Computer wins");
     //  "Player 2 wins";
   } else if (score === "ScissorsPaper") {
-    console.log("Player 1 wins");
+    console.log(`${userName} wins`);
     //  "Player 1 wins";
   }
 }
