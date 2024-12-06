@@ -39,8 +39,17 @@ When ===
 let rock = "Rock";
 let paper = "Paper";
 let scissors = "Scissors";
+//mvp 4
 
-// array
+// Create array containing wins, losses and draws ✅
+// Use this to calculate games played
+// Print updated array after each round
+// Present to user as Games played:   W: L: D:
+
+//array score logic (wins, losses, draws)
+let scoreBoard = [0, 0, 0,]
+
+// array game logic
 let gameChoice = ["Rock", "Paper", "Scissors"];
 let playAgain = false;
 
@@ -53,6 +62,8 @@ if (gameStart === "Yes") {
 //store name as variable ✅
 //use name in game result (Player 1)
 
+
+
 let userName = prompt("Please enter your name: ");
 
 // Declare function
@@ -64,30 +75,39 @@ function userSelection() {
 
   if (score === "RockRock") {
     console.log("Draw");
+    scoreBoard[2]++;
     //  "Draw";
   } else if (score === "RockPaper") {
     console.log("Computer wins");
+    scoreBoard[1]++;
     //  "Player 2 wins";
   } else if (score === "RockScissors") {
     console.log(`${userName} wins`);
+    scoreBoard[0] ++;
     //  "Player 1 wins";
   } else if (score === "PaperPaper") {
     console.log("Draw");
+    scoreBoard[2]++;
     //  "Draw";
   } else if (score === "PaperScissors") {
     console.log("Computer wins");
+    scoreBoard[1]++;
     //  "Player 2 wins";
   } else if (score === "PaperRock") {
     console.log(`${userName} wins`);
+    scoreBoard[0]++;
     //  "Player 1 wins";
   } else if (score === "ScissorsScissors") {
     console.log("Draw");
+    scoreBoard[2]++;
     //  "Draw";
   } else if (score === "ScissorsRock") {
     console.log("Computer wins");
+    scoreBoard[1]++;
     //  "Player 2 wins";
   } else if (score === "ScissorsPaper") {
     console.log(`${userName} wins`);
+    scoreBoard[0]++;
     //  "Player 1 wins";
   }
 }
@@ -95,6 +115,7 @@ function userSelection() {
 // wrap function call in while loop
 while (playAgain === true) {
   userSelection();
+  console.log(`Wins: ${scoreBoard[0]} Losses: ${scoreBoard[1]} Draws: ${scoreBoard[2]} Games played: ${scoreBoard[0] + scoreBoard[1] + scoreBoard[2]}`);
   let choice = prompt(
     "Would you like to play again? Please enter Yes or No"
   ).toLowerCase();
