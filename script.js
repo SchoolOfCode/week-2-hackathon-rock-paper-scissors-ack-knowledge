@@ -1,54 +1,13 @@
-// User input stored as a perimeter of a variable✅
-// Variable with static value for computer input ✅
-
-/* MVP 1
-If statement userinput + computerinput ===
-R > S 
- player 1 wins
-S > P 
- player 1 wins
-P > R 
- player 1 wins
-R < P 
- player 2 wins
-S < R 
- player 2 wins
-P < S 
- player 2 wins
-When ===  
- draw
-*/
-
-/*
-MVP 2
-Make an array with possible computer choices (rock, paper, scissors)✅
-Computer generates a random number from 0 to 2✅
-Use the generated number to select an object in an array✅
-Link generated number to computer input✅
-Then use the computer input in the function✅
-*/
-
-/*
-Game loop
-Encompass function in a while loop ✅
-While playAgain = true ✅
-Prompt user, play again? ✅
-If yes, continue looping the function ✅
-If no playAgain = false ✅
-Break loop ✅
-*/
+// rock, Paper, Scissors web console app 
+// By: Team Ack-nowledge
+// Adam Hemmings
+// Charlotte Bell
+// Kim Lida
 
 // define the three values for the game
 let rock = "Rock";
 let paper = "Paper";
 let scissors = "Scissors";
-
-/* mvp 4
-Create array containing wins, losses and draws ✅
-Use this to calculate games played ✅
-Print updated array after each round ✅
-Present to user as Games played:   W: L: D: ✅
-*/
 
 //scoreboard array (wins, losses, draws)
 let scoreBoard = [0, 0, 0];
@@ -99,9 +58,8 @@ if (gameStart === "Yes") {
   playAgain = true;
 }
 
-//prompt user for name ✅
-//store name as variable ✅
-//use name in game result (Player 1) ✅
+//prompt user for name 
+
 let userName = prompt("Please enter your name: ");
 
 // wrap function call in while loop
