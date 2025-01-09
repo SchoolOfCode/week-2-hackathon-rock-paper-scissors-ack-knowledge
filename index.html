@@ -4,9 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <div id="start-menu" class="start-menu">
+        <h1>Welcome to Rock Paper Scissors</h1>
+        <input type="text" id="user-name-input" placeholder="Enter your name">
+        <button id="start-button">Start Game</button>
+    </div>
+    <div id="game-mode-menu" class="game-mode-menu" style="display: none;">
+        <h2>Select Game Mode</h2>
+        <button id="best-of-3-button">Best of 3</button>
+        <button id="best-of-5-button">Best of 5</button>
+    </div>
+    <div id="game-container" class="game-container" style="display: none;">
+        <div id="result-display" class="result-display"></div>
+        <div id="user-name-display" class="user-name-display"></div>
+        <div class="row">
+            <div id="player" class="box">
+                <img id="player-img" src="" alt="Player Choice">
+            </div>
+            <div id="vs" class="vs">
+                <img src="vs.jpeg" alt="VS">
+            </div>
+            <div id="npc" class="box">
+                <img id="npc-img" src="" alt="NPC Choice">
+            </div>
+        </div>
+        <div class="choices">
+            <button class="choice-button" onclick="makeChoice('rock')">Rock</button>
+            <button class="choice-button" onclick="makeChoice('paper')">Paper</button>
+            <button class="choice-button" onclick="makeChoice('scissors')">Scissors</button>
+        </div>
+    </div>
+    <div id="post-game-menu" class="post-game-menu" style="display: none;">
+        <h2 id="final-result"></h2>
+        <button id="play-again-button">Play Again</button>
+        <button id="end-game-button">End Game</button>
+    </div>
 </body>
 </html>

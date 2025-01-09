@@ -15,65 +15,102 @@ let scoreBoard = [0, 0, 0];
 // array game logic
 let gameChoice = ["Rock", "Paper", "Scissors"];
 
-//while loop condition
-let playAgain = false;
+// //while loop condition
+// let playAgain = false;
 
-// Declare function
-function userSelection() {
-  input = prompt("Please choose Rock, Paper or Scissors");
-  let computerInput = gameChoice[Math.floor(Math.random() * 3)];
+document.getElementById('start-button').addEventListener('click', startGame);
+document.getElementById('best-of-3-button').addEventListener('click', () => selectGameMode(3));
+document.getElementById('best-of-5-button').addEventListener('click', () => selectGameMode(5));
+document.getElementById('play-again-button').addEventListener('click', resetGame);
+document.getElementById('end-game-button').addEventListener('click', endGame);
 
-  let score = input + computerInput;
+let userName;
+let gameMode;
+let playerWins = 0;
+let npcWins = 0;
+let roundsPlayed = 0;
 
-  if (
-    score === "RockRock" ||
-    score === "ScissorsScissors" ||
-    score === "PaperPaper"
-  ) {
-    console.log("Draw");
-    scoreBoard[2]++;
-    //  "Draw";
-  } else if (
-    score === "RockPaper" ||
-    score === "PaperScissors" ||
-    score === "ScissorsRock"
-  ) {
-    console.log("Computer wins");
-    scoreBoard[1]++;
-    //  "Player 2 wins";
-  } else if (
-    score === "RockScissors" ||
-    score === "PaperRock" ||
-    score === "ScissorsPaper"
-  ) {
-    console.log(`${userName} wins`);
-    scoreBoard[0]++;
-    //  "Player 1 wins";
-  }
+function startGame() {
+    userName = document.getElementById('user-name-input').value;
+    if (userName.trim() === '') {
+        alert('Please enter your name');
+        return;
+    }
+
+    document.getElementById('user-name-display').textContent = `Player: ${userName}`;
+    document.getElementById('start-menu').style.display = 'none';
+    document.getElementById('game-mode-menu').style.display = 'block';
 }
 
-// ask if the user wants to play
-let gameStart = prompt("Would you like to play? Please type Yes or No");
-if (gameStart === "Yes") {
-  playAgain = true;
+function selectGameMode(mode) {
+    gameMode = mode;
+    document.getElementById('game-mode-menu').style.display = 'none';
+    document.getElementById('game-container').style.display = 'block';
 }
 
-//prompt user for name 
+function makeChoice(playerChoice) {
+    const choices = ['rock', 'paper', 'scissors'];
+    const npcChoice = choices[Math.floor(Math.random() * choices.length)];
 
-let userName = prompt("Please enter your name: ");
+    updateChoiceImages(playerChoice, npcChoice);
 
-// wrap function call in while loop
-while (playAgain) {
-  userSelection();
-  console.log(
-    `Wins: ${scoreBoard[0]} Losses: ${scoreBoard[1]} Draws: ${
-      scoreBoard[2]
-    } Games played: ${scoreBoard[0] + scoreBoard[1] + scoreBoard[2]}`
-  );
-  let choice = prompt(
-    "Would you like to play again? Please enter Yes or No"
-  ).toLowerCase();
-  if (choice === "no") {
-    playAgain = false;
-  }
+    let result;
+    if (playerChoice === npcChoice) {
+        result = 'Draw';
+    } else if (
+        (playerChoice === 'rock' && npcChoice === 'scissors') ||
+        (playerChoice === 'paper' && npcChoice === 'rock') ||
+        (playerChoice === 'scissors' && npcChoice === 'paper')
+    ) {
+        result = 'Player wins';
+        playerWins++;
+    } else {
+        result = 'NPC wins';
+        npcWins++;
+    }
+
+    roundsPlayed++;
+    document.getElementById('result-display').textContent = result;
+
+    if (playerWins === Math.ceil(gameMode / 2) || npcWins === Math.ceil(gameMode / 2) || roundsPlayed === gameMode) {
+        endGame();
+    }
+}
+
+function updateChoiceImages(playerChoice, npcChoice) {
+    const playerImg = document.getElementById('player-img');
+    const npcImg = document.getElementById('npc-img');
+
+    const choices = {
+        rock: 'rock.png',
+        paper: 'paper.png',
+        scissors: 'scissors.jpg'
+    };
+
+    playerImg.src = choices[playerChoice];
+    npcImg.src = choices[npcChoice];
+}
+
+function endGame() {
+    document.getElementById('game-container').style.display = 'none';
+    document.getElementById('post-game-menu').style.display = 'block';
+
+    let finalResult;
+    if (playerWins > npcWins) {
+        finalResult = `${userName} wins the game!`;
+    } else if (npcWins > playerWins) {
+        finalResult = 'NPC wins the game!';
+    } else {
+        finalResult = 'The game is a draw!';
+    }
+
+    document.getElementById('final-result').textContent = finalResult;
+}
+
+function resetGame() {
+    playerWins = 0;
+    npcWins = 0;
+    roundsPlayed = 0;
+    document.getElementById('post-game-menu').style.display = 'none';
+    document.getElementById('start-menu').style.display = 'block';
 }

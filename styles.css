@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    flex-direction: column;
+}
+
+.start-menu, .game-mode-menu, .post-game-menu {
+    text-align: center;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.user-name-display {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.result-display {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: red;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Adjust the spacing between the elements */
+}
+
+.box {
+    width: 150px; /* Adjust size for player and NPC images */
+    height: 150px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.vs img {
+    width: 75px; /* Half the size of the player/NPC boxes */
+    height: 75px;
+    object-fit: cover;
+}
+
+.choices {
+    margin-top: 20px;
+}
+
+.choice-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
